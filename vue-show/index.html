@@ -1,0 +1,40 @@
+<doctype html>
+<html>
+    <head>
+        <title>Vue Show</title> 
+    <style>
+    .error {
+        color:red;
+        display:block;
+    }
+    textarea {
+        display:block;
+        height: 250px;
+        width: 400px;
+    }
+    </style>
+    </head>
+    <body>
+        <div id="app">   
+            <form>
+                <span class="error" v-show="!message">
+                    You must enter a message
+                </span>
+                
+                <textarea v-model="message"></textarea>
+                <button type="submit" v-show="message">
+                    Send Message
+                </button>
+            </form>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.min.js"></script>
+        <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: ''
+            }
+        });
+        </script>
+    </body>
+</html>
