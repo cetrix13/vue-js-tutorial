@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Handling of Vuejs event</title>
+    <style>
+    body {
+        margin: 0 20%;
+        padding-top: 50px;
+    }
+    </style>
+    </head>
+    <body>
+        <h1>Event handling of submit and click events in Vuejs</h1>
+        <form id="app" action="done.html" v-on:submit="handleIt">
+            <button type="submit" @click="updateCounter">
+                Submit form #{{ counter }}
+            </button>
+        </form>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.min.js"></script>
+    <script>
+    new Vue({
+        el: '#app',
+        data: {
+            "counter": 0
+        },
+        methods: {
+            handleIt: function(e) {
+                alert('Form is handled!');               
+                e.preventDefault();
+            },
+            updateCounter: function(){
+                this.counter += 1;    
+            }
+        }
+    });
+    </script>
+    </body>
+</html>
