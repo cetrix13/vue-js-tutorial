@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Handling of Vuejs event</title>
+    <style>
+    body {
+        margin: 0 20%;
+        padding-top: 50px;
+    }
+    </style>
+    </head>
+    <body>
+        <h1>Make use of components in Vue.js</h1>
+        <div id="app">
+            <counter subject="Likes"></counter>
+            <counter subject="Dislikes"></counter>
+        </div>
+        <template id="counter-template">
+            <h2> {{ subject }} </h2>
+            <button @click="updateCounter">
+                Submit form #{{ counter }}
+            </button>
+        </template>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
+    <script>
+    Vue.component('counter', {
+        "template": "#counter-template",
+        "props": ['subject'],
+        "data": function(){
+            return { counter: 0 }
+        },
+        "methods": {
+            updateCounter: function(e){
+                this.counter += 1;
+                e.preventDefault();
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app',
+    });
+    </script>
+    </body>
+</html>
