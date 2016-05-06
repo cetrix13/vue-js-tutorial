@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Handling of Vuejs event</title>
+        <link rel="stylesheet" href="styles.css" type="text/css" media="screen" charset="utf-8">
+    </head>
+    <body>
+        <h1>Example of building full name with computed properties</h1>
+        <h2>{{ fullName }}</h2>
+        <input type="text" v-model="first" placeholder="First name">
+        <input type="text" v-model="last" placeholder="Last name">
+        
+        <h1>Example of calculation a skill level</h1>
+        <h2>Skill level: {{ skillLevel }}</h2>
+        <input type="text" v-model="points" placeholder="Points">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
+        <script>
+        new Vue({
+            el: 'body',
+            data: {
+                first: 'Alex',
+                last: 'Dadykin',
+                fullName: 'Alex Dadykin',
+                points: 50,
+            },
+            computed: {
+                fullName: function(){
+                    return this.first + ' ' + this.last;
+                },
+                skillLevel: function(){
+                    if (this.points < 100) {
+                        return "Beginner";
+                    }                    
+                    return "Advanced";
+                }
+            }
+        });
+        </script>
+    </body>
+</html>
