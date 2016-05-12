@@ -1,0 +1,13 @@
+.plan {
+    padding: 0.2em 0;
+}
+
+.plan__name {
+    display: inline-block;
+    width: 6em;
+}
+
+.plan__price {
+    display: inline-block;
+    width: 6em;
+}

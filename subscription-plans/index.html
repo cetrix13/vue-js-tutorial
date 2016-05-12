@@ -1,0 +1,47 @@
+<DOCTYPE html>
+<html>
+    <head>
+        <title>Something</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id='app'>
+            <div v-for="plan in plans">
+                <plan :plan="plan"></plan>
+            </div>
+        </div>
+        <template id="plan-template">
+            <div class="plan">
+                <span class="plan__name">
+                    {{plan.name}}
+                </span>
+                <span class="plan__price">
+                    {{plan.price}}/month
+                </span>
+
+            <button>Upgrade</button>
+            </div>
+        </template>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.min.js"></script>
+    <script>
+    new Vue({
+        el: '#app',
+        data: {
+            plans: [
+                {name: 'Enterprise', price: 100},
+                {name: 'Pro', price: 50},
+                {name: 'Personal', price: 10},
+                {name: 'Free', price: 0}
+            ]
+        },
+        components:{
+            plan: {
+                template: '#plan-template',
+                props: ['plan']
+            }
+        }
+    });
+    </script>
+    </body>
+</html>
+
