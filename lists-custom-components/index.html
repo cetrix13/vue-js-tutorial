@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Something</title>
+    <style>
+        .completed {
+            text-decoration: line-through; 
+        }
+    </style>
+    </head>
+    <body>
+        <div id='app'>
+            <tasks :list="tasks"></tasks>
+        </div>
+        <template id="task-template">
+            <ul>
+                <li :class="{'completed': task.completed}" 
+                    v-for="task in list"
+                    @click="task.completed = !task.completed"
+                >{{task.body}}</li>
+            </ul>
+        </template>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.min.js"></script>
+    <script>
+    Vue.component('tasks',{
+        props:['list'],
+        template: '#task-template' 
+    })
+    new Vue({
+        el: '#app',
+        data:{
+        tasks: [ 
+                {body: 'Buy milk', completed: false},
+                {body: 'Pay for the internet access', completed: false},
+                {body: 'Check the weather for tomorrow', completed: true},
+        ]} 
+    });
+    </script>
+</html>
+
