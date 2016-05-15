@@ -7,12 +7,36 @@
     </head>
     <body>
         <div class="container">
-            <h1>My tasks:</h1>
-            <ul class="list-group">
-               @foreach ($data as $item)
-                <li class="list-group-item">{{$item->body}}</li>
-               @endforeach
-            </ul>
+            <div id="app">
+            <tasks list="{{$data}}"></tasks>
+            <template id="tasks-template">
+                <h1>My tasks:</h1>
+                <ul class="list-group">
+                    <li class="list-group-item" v-for="task in list">
+                        @{{ task.body }}
+                    </li>
+                </ul>
+            </template>
+            </div>
         </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.min.js"></script>
+    <script>
+        Vue.component('tasks',{
+            props: ['list'],
+            template: '#tasks-template',
+            created(){
+                this.list= JSON.parse(this.list)
+            }
+        });
+        new Vue({
+            el: '#app',
+            data:{
+                tasks:[]
+            },
+            methods:{
+
+            }
+        });
+    </script>
     </body>
 </html>
