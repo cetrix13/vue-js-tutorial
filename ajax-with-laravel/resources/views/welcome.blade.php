@@ -6,7 +6,7 @@
     </head>
     <body>
         <div class="container">
-            <tasks list="{{$data}}" inline-template>
+            <tasks inline-template>
                 <h2>My tasks:</h2>
                 <ul class="list-group">
                     <li class="list-group-item" v-for="task in list">
@@ -16,6 +16,7 @@
             </tasks>
         </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     </body>
 </html>

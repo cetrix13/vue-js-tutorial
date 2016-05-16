@@ -1,15 +1,22 @@
 Vue.component('tasks',{
     props: ['list'],
-    created(){
-        this.list= JSON.parse(this.list)
+    data: {
+        list: []
+    },
+    created: function() {
+       this.fetchTaskList();
+    },
+    methods:{
+        fetchTaskList: function(){
+            this.$http.get('api/tasks', function(tasks){
+                this.list = tasks;
+            }.bind(this));
+        }
     }
 });
 new Vue({
     el: 'body',
     data:{
         tasks:[]
-    },
-    methods:{
-
     }
 });

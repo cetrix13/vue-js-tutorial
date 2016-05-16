@@ -12,6 +12,10 @@ use App\Task;
 */
 
 Route::get('/', function () {
-    $data = Task::latest()->get();
-    return view('welcome',compact('data'));
+    //$data = Task::latest()->get();
+    //return view('welcome',compact('data'));
+    return view('welcome');
+});
+Route::get('api/tasks', function(){
+  return Task::latest()->get();
 });
